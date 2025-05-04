@@ -1,0 +1,155 @@
+require:
+  - rubocop-performance
+  - rubocop-rake
+
+AllCops:
+  TargetRubyVersion: 3.3.5
+  Exclude:
+    - coverage/**/*
+    - .git/**/*
+
+Naming/FileName:
+  Enabled: false
+
+Naming/AsciiIdentifiers:
+  Enabled: false
+
+Naming/PredicateName:
+  Enabled: false
+
+Naming/VariableNumber:
+  Enabled: false
+
+Naming/MethodParameterName:
+  MinNameLength: 1
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  Max: 500
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+  # Max: 20
+
+Metrics/ParameterLists:
+  Max: 20
+
+Metrics/BlockLength:
+  Max: 300
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/MethodLength:
+  Max: 170
+
+Metrics/AbcSize:
+  Max: 300
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Metrics/BlockNesting:
+  Enabled: false
+
+Lint/UselessAssignment:
+  Enabled: false
+
+Lint/BooleanSymbol:
+  Enabled: false
+
+Lint/UselessMethodDefinition:
+  Enabled: false
+
+Lint/MissingSuper:
+  Enabled: false
+
+Lint/EmptyBlock:
+  Enabled: false
+
+Lint/DuplicateBranch:
+  Enabled: false
+
+Style/IfWithBooleanLiteralBranches:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Style/Lambda:
+  EnforcedStyle: literal
+
+Style/WordArray:
+  Enabled: false
+
+Style/RescueStandardError:
+  Enabled: false
+
+Style/OptionalBooleanParameter:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/RegexpLiteral:
+  AllowInnerSlashes: true
+
+Style/AccessorGrouping:
+  Enabled: false
+
+Style/RedundantAssignment:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/HashAsLastArrayItem:
+  EnforcedStyle: no_braces
+
+Style/DoubleNegation:
+  Enabled: false
+
+Style/SoleNestedConditional:
+  Enabled: false
+
+Style/CombinableLoops:
+  Enabled: false
+
+Style/OpenStructUse:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Layout/FirstParameterIndentation:
+  IndentationWidth: 4
+
+Layout/FirstHashElementIndentation:
+  IndentationWidth: 4
+  EnforcedStyle: consistent
+
+Layout/AssignmentIndentation:
+  IndentationWidth: 4
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+  IndentationWidth: 4
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+  IndentationWidth: 4
+
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
+  IndentationWidth: 4
+
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+  IndentationWidth: 4
+
+Layout/LineLength:
+  Enabled: false
