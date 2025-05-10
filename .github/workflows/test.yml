@@ -13,9 +13,11 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3.0'
-          bundler-cache: true
+          bundler-cache: false
       - name: Install dependencies
-        run: bundle install
+        run: |
+          bundle config set --local frozen false
+          bundle install
       - name: Run tests
         run: bundle exec rspec
       - name: Run RuboCop
