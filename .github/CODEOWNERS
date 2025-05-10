@@ -1,0 +1,15 @@
+# This file defines code owners for different parts of the repository
+# Each line represents a pattern and its owner(s)
+
+# By default, @yusukehigasa is the owner of all files
+*                  @yusukehigasa
+
+# Core library code
+/lib/              @yusukehigasa
+
+# Tests
+/spec/             @yusukehigasa
+
+# Documentation
+*.md               @yusukehigasa
+LICENSE            @yusukehigasa
