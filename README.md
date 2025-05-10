@@ -81,8 +81,11 @@ end
 git clone https://github.com/yusukehigasa/nth_weekday.git
 cd nth_weekday
 bundle install
-rspec
+bundle exec rspec  # テスト実行
+bundle exec rubocop  # コードスタイルチェック
 ```
+
+このプロジェクトでは [RuboCop](https://rubocop.org/) を使用してコードスタイルを一貫して維持しています。コード変更時は `bundle exec rubocop` でスタイルチェックを実行してください。
 
 ## 👥 Contributing / 貢献
 

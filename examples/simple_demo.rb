@@ -1,9 +1,10 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require 'nth_weekday'
 
-puts "NthWeekday gem example"
-puts "======================="
+puts 'NthWeekday gem example'
+puts '======================='
 
 # 2025年5月の第2月曜日を取得
 monday = NthWeekday.get(year: 2025, month: 5, weekday: :mo, nth: 2)

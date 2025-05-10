@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # nth_weekday の使用例
 
 require 'nth_weekday'

@@ -8,3 +8,7 @@ group :development, :test do
   gem "rspec", "~> 3.0"
   gem "bundler", "~> 2.0"
 end
+
+gem "rubocop", "~> 1.75", :group => :development
+gem "rubocop-performance", "~> 1.25", :group => :development
+gem "rubocop-rake", "~> 0.7.1", :group => :development

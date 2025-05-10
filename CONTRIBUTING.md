@@ -39,17 +39,26 @@ cd nth_weekday
 bundle install
 ```
 
-## Testing
+## Testing and Quality Assurance
 
-Make sure all tests pass after making changes:
+Make sure all tests pass and code style checks are successful after making changes:
 
 ```bash
+# Run test suite
 bundle exec rspec
+
+# Run code style checks
+bundle exec rubocop
 ```
+
+CI workflows will automatically run both tests and style checks on your pull request.
 
 ## Coding Style
 
 - Follow standard Ruby style guidelines
+- We use [RuboCop](https://rubocop.org/) to enforce consistent code style 
+- Run `bundle exec rubocop` before submitting your changes
+- The project includes a `.rubocop.yml` configuration file to maintain consistency
 - Add appropriate documentation comments to methods
 - Include explanatory comments for complex logic
 

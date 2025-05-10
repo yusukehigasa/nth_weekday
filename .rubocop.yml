@@ -1,12 +1,16 @@
-require:
+plugins:
   - rubocop-performance
   - rubocop-rake
 
 AllCops:
-  TargetRubyVersion: 3.3.5
+  TargetRubyVersion: 3.3.0
+  NewCops: enable
+  SuggestExtensions: false
   Exclude:
     - coverage/**/*
     - .git/**/*
+    - Gemfile
+    - Gemfile.lock
 
 Naming/FileName:
   Enabled: false
