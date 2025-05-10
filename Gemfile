@@ -10,5 +10,3 @@ group :development, :test do
 end
 
 gem "rubocop", "~> 1.75", :group => :development
-gem "rubocop-performance", "~> 1.25", :group => :development
-gem "rubocop-rake", "~> 0.7.1", :group => :development

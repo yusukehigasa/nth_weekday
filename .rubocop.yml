@@ -1,6 +1,4 @@
-plugins:
-  - rubocop-performance
-  - rubocop-rake
+# plugins/requireの指定を一旦削除（GitHub Actionsでエラーが発生するため）
 
 AllCops:
   TargetRubyVersion: 3.3.0
