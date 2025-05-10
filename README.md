@@ -110,7 +110,3 @@ bundle exec rubocop  # コードスタイルチェック
 -	[RubyGems - nth_weekday](https://rubygems.org/gems/nth_weekday)
 -	[GitHub Repository](https://github.com/yusukehigasa/nth_weekday)
 -	[Changelog](https://github.com/yusukehigasa/nth_weekday/blob/main/CHANGELOG.md)
-# Test push restriction
-
-# Testing protected branch
-# Protected branch test
