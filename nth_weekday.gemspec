@@ -16,10 +16,18 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = ">= 3.3.0"
 
   # Specify which files should be added to the gem when it is released.
-  spec.files         = Dir.glob("{lib}/**/*") + %w[LICENSE README.md VERSION]
+  spec.files         = Dir.glob("{lib,examples}/**/*") + %w[LICENSE README.md VERSION Rakefile]
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
+  
+  spec.metadata = {
+    "homepage_uri" => spec.homepage,
+    "source_code_uri" => "https://github.com/yusukehigasa/nth_weekday",
+    "changelog_uri" => "https://github.com/yusukehigasa/nth_weekday/blob/main/CHANGELOG.md",
+    "bug_tracker_uri" => "https://github.com/yusukehigasa/nth_weekday/issues",
+    "rubygems_mfa_required" => "true"
+  }
 
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 13.0"

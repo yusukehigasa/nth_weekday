@@ -23,10 +23,10 @@
 ## 💎 Installation / インストール
 
 ```bash
-# Gemfile に追加（まだ rubygems に未公開なら GitHub 経由で）
-gem 'nth_weekday', github: 'yusukehigasa/nth_weekday'
+# Gemfileに追加
+gem 'nth_weekday'
 
-# 公開済みであれば
+# または直接インストール
 gem install nth_weekday
 ```
 
@@ -77,9 +77,9 @@ rspec
 
 ## 🙌 Author
 
-- [Yusuke Higasa]()
+- [Yusuke Higasa](https://github.com/yusukehigasa)
 
 ## 🔗 Links
 
--	[RubyGems - nth_weekday]()
--	[GitHub Repository]()
+-	[RubyGems - nth_weekday](https://rubygems.org/gems/nth_weekday)
+-	[GitHub Repository](https://github.com/yusukehigasa/nth_weekday)
