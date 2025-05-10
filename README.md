@@ -113,3 +113,4 @@ bundle exec rubocop  # コードスタイルチェック
 # Test push restriction
 
 # Testing protected branch
+# Protected branch test
