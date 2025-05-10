@@ -112,3 +112,4 @@ bundle exec rubocop  # コードスタイルチェック
 -	[Changelog](https://github.com/yusukehigasa/nth_weekday/blob/main/CHANGELOG.md)
 # Test push restriction
 
+# Testing protected branch
