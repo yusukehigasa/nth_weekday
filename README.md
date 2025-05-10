@@ -1,6 +1,6 @@
 # nth_weekday
 
-[![Gem Version](https://badge.fury.io/rb/nth_weekday.svg)](https://rubygems.org/gems/nth_weekday)
+[![Gem Version](https://img.shields.io/gem/v/nth_weekday)](https://rubygems.org/gems/nth_weekday)
 [![Build Status](https://github.com/yusukehigasa/nth_weekday/actions/workflows/test.yml/badge.svg)](https://github.com/yusukehigasa/nth_weekday/actions)
 
 ---
