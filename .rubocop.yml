@@ -9,6 +9,9 @@ AllCops:
     - .git/**/*
     - Gemfile
     - Gemfile.lock
+    - vendor/**/*
+    - vendor/bundle/**/*
+    - bin/**/*
 
 Naming/FileName:
   Enabled: false
