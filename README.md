@@ -30,6 +30,10 @@ gem 'nth_weekday'
 gem install nth_weekday
 ```
 
+## 💻 Requirements / 動作環境
+
+- Ruby 3.3.0以上
+
 ## 🚀 Usage / 使い方
 
 ```ruby
@@ -50,8 +54,17 @@ NthWeekday.get(year: 2025, month: 12, weekday: :fr, nth: -1)
 |--------------|--------|-------------------------------------------------------|
 | `year`       | Integer| 対象年（例: 2025）                                   |
 | `month`      | Integer| 対象月（1〜12）                                       |
-| `weekday`    | Symbol | 対象曜日（例: `:mo`, `:tu`, `:we`, `:fr` など）      |
+| `weekday`    | Symbol | 対象曜日（`:su`, `:mo`, `:tu`, `:we`, `:th`, `:fr`, `:sa`）      |
 | `nth`        | Integer| 第n◯曜日。1〜5、または `-1` で「最後の◯曜日」を指定 |
+
+### 曜日シンボル一覧
+- `:su` - 日曜日 (Sunday)
+- `:mo` - 月曜日 (Monday)
+- `:tu` - 火曜日 (Tuesday)
+- `:we` - 水曜日 (Wednesday)
+- `:th` - 木曜日 (Thursday)
+- `:fr` - 金曜日 (Friday)
+- `:sa` - 土曜日 (Saturday)
 
 ## 🧪 Example: 2025年の各月の第3水曜日を取得
 
@@ -71,6 +84,16 @@ bundle install
 rspec
 ```
 
+## 👥 Contributing / 貢献
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -am 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Create a new Pull Request
+
+バグ報告や機能要望は[GitHub Issues](https://github.com/yusukehigasa/nth_weekday/issues)にお願いします。
+
 ## 📄 License
 
 - MIT License
@@ -83,3 +106,4 @@ rspec
 
 -	[RubyGems - nth_weekday](https://rubygems.org/gems/nth_weekday)
 -	[GitHub Repository](https://github.com/yusukehigasa/nth_weekday)
+-	[Changelog](https://github.com/yusukehigasa/nth_weekday/blob/main/CHANGELOG.md)
