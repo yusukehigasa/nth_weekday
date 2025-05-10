@@ -1,2 +1,3 @@
-.ruby-version
 .rspec
+.rspec_status
+/nth_weekday-*.gem
