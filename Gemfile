@@ -5,7 +5,7 @@ gemspec
 
 group :development, :test do
   gem "rake", "~> 13.0"
-  gem "rspec", "~> 3.0"
+  gem "rspec", "~> 3.13"
   gem "bundler", "~> 2.0"
 end
 
