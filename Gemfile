@@ -9,4 +9,4 @@ group :development, :test do
   gem "bundler", "~> 2.0"
 end
 
-gem "rubocop", "~> 1.81", :group => :development
+gem "rubocop", "~> 1.84", :group => :development
