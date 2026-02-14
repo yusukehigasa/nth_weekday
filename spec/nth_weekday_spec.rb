@@ -54,7 +54,12 @@ RSpec.describe NthWeekday do
       end
 
       it 'raises an error for invalid nth value' do
-        expect { NthWeekday.get(year: 2025, month: 4, weekday: :we, nth: 6) }
+        expect { NthWeekday.get(year: 2025, month: 4, weekday: :we, nth: 0) }
+            .to raise_error(ArgumentError, 'Invalid nth: 0')
+      end
+
+      it 'raises an error when requesting a 6th Monday' do
+        expect { NthWeekday.get(year: 2025, month: 4, weekday: :mo, nth: 6) }
             .to raise_error(ArgumentError, 'Invalid nth: 6')
       end
 
