@@ -1,29 +1,51 @@
 name: Codex Review Trigger
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: "Pull request number to comment on (for manual verification)"
+        required: false
+      head_sha:
+        description: "Head commit SHA to associate with this review request"
+        required: false
 
 jobs:
   request-codex-review:
-    if: ${{ !github.event.pull_request.draft }}
+    if: ${{ github.event_name == 'workflow_dispatch' || !github.event.pull_request.draft }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
       actions: read
       issues: write
+      pull-requests: write
     concurrency:
-      group: codex-review-pr-${{ github.event.pull_request.number }}-${{ github.event.pull_request.head.sha }}
+      group: codex-review-pr-${{ github.event.pull_request.number || inputs.pr_number }}-${{ github.event.pull_request.head.sha || inputs.head_sha }}
       cancel-in-progress: false
     steps:
       - name: Request Codex review on PR
         uses: actions/github-script@v7
         with:
           script: |
-            const pr = context.payload.pull_request;
             const owner = context.repo.owner;
             const repo = context.repo.repo;
-            const headSha = pr.head.sha;
+            let prNumber;
+            let headSha;
+
+            if (context.eventName === 'workflow_dispatch') {
+              prNumber = Number(core.getInput('pr_number'));
+              headSha = core.getInput('head_sha')?.trim();
+              if (!prNumber || !headSha) {
+                core.setFailed('workflow_dispatch requires both inputs: pr_number and head_sha');
+                return;
+              }
+            } else {
+              const pr = context.payload.pull_request;
+              prNumber = pr.number;
+              headSha = pr.head.sha;
+            }
 
             const maxAttempts = 40; // 10 minutes with 15s interval
             const waitMs = 15000;
@@ -62,7 +84,7 @@ jobs:
             const comments = await github.paginate(github.rest.issues.listComments, {
               owner,
               repo,
-              issue_number: pr.number,
+              issue_number: prNumber,
               per_page: 100
             });
 
@@ -85,6 +107,6 @@ jobs:
             await github.rest.issues.createComment({
               owner,
               repo,
-              issue_number: pr.number,
+              issue_number: prNumber,
               body
             });
