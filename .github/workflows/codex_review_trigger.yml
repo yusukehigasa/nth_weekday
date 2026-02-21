@@ -35,8 +35,8 @@ jobs:
             let headSha;
 
             if (context.eventName === 'workflow_dispatch') {
-              prNumber = Number(core.getInput('pr_number'));
-              headSha = core.getInput('head_sha')?.trim();
+              prNumber = Number(context.payload.inputs?.pr_number);
+              headSha = context.payload.inputs?.head_sha?.trim();
               if (!prNumber || !headSha) {
                 core.setFailed('workflow_dispatch requires both inputs: pr_number and head_sha');
                 return;
