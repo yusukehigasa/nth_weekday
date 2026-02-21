@@ -87,6 +87,12 @@ bundle exec rubocop  # コードスタイルチェック
 
 このプロジェクトでは [RuboCop](https://rubocop.org/) を使用してコードスタイルを一貫して維持しています。コード変更時は `bundle exec rubocop` でスタイルチェックを実行してください。
 
+エージェント運用時のルールは以下を参照してください。
+
+- [AGENTS.md](./AGENTS.md)
+- [CODING_RULES.md](./CODING_RULES.md)
+- [HUMAN_IN_THE_LOOP.md](./HUMAN_IN_THE_LOOP.md)
+
 ## 👥 Contributing / 貢献
 
 1. Fork the repository
