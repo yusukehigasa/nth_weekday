@@ -79,34 +79,9 @@ jobs:
               return;
             }
 
-            const marker = `<!-- codex-review-trigger:sha=${headSha} -->`;
-
-            const comments = await github.paginate(github.rest.issues.listComments, {
-              owner,
-              repo,
-              issue_number: prNumber,
-              per_page: 100
-            });
-
-            const alreadyPosted = comments.some((comment) => comment.body && comment.body.includes(marker));
-            if (alreadyPosted) {
-              core.info(`Skip posting: marker already exists for sha=${headSha}`);
-              return;
-            }
-
-            const body = [
-              '@codex review',
-              '',
-              'CI passed. Please review this PR update.',
-              `- Commit: \`${headSha}\``,
-              `- Test run: ${matchedRun.html_url}`,
-              '',
-              marker
-            ].join('\n');
-
             await github.rest.issues.createComment({
               owner,
               repo,
               issue_number: prNumber,
-              body
+              body: '@codex review'
             });
