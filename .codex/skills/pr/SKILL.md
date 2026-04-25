@@ -70,7 +70,7 @@ gh pr view --web
 
 ## PR Body Template
 
-```md
+````md
 ## Summary
 
 ## Related Issue
@@ -99,7 +99,7 @@ Closes #<number>
 - [ ] Documentation updated or not required
 - [ ] No unrelated changes
 - [ ] Review blockers resolved
-```
+````
 
 ## Output Format
 
