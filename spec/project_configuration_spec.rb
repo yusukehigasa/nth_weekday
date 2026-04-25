@@ -13,8 +13,15 @@ RSpec.describe 'project configuration' do
 
   it 'verifies compatibility on the minimum Ruby and Ruby 4.0.1 in CI' do
     workflow = YAML.load_file(File.join(root, '.github/workflows/test.yml'))
-    ruby_versions = workflow.fetch('jobs').fetch('test').fetch('strategy').fetch('matrix').fetch('ruby-version')
+    ruby_versions = workflow.fetch('jobs').fetch('test-matrix').fetch('strategy').fetch('matrix').fetch('ruby-version')
 
     expect(ruby_versions).to contain_exactly('3.3.0', '4.0.1')
+  end
+
+  it 'keeps the required test check available for branch protection' do
+    workflow = YAML.load_file(File.join(root, '.github/workflows/test.yml'))
+    test_job = workflow.fetch('jobs').fetch('test')
+
+    expect(test_job.fetch('needs')).to eq('test-matrix')
   end
 end
