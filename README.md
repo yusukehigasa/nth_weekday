@@ -19,7 +19,6 @@
 - ✅ Rails / Sinatra / CLI / バッチ対応
 - 🧪 テスト済み、CI/CD導入しやすい構成
 
-
 ## 💎 Installation / インストール
 
 ```bash
@@ -88,6 +87,46 @@ bundle exec rubocop  # コードスタイルチェック
 このプロジェクトでは [RuboCop](https://rubocop.org/) を使用してコードスタイルを一貫して維持しています。コード変更時は `bundle exec rubocop` でスタイルチェックを実行してください。
 
 エージェント運用時のルールは以下を参照してください。
+
+## 🤖 AI / Agent Development Modes
+
+このリポジトリは AI エージェントによる開発を前提に、2つのモードをサポートしています。
+
+### 🧩 通常モード（Single Agent）
+
+単一エージェントによる高速な実装。
+
+**用途**
+- 小規模修正
+- 明確なタスク
+
+---
+
+### 🧠 オーケストレーターモード（Multi-Agent）
+
+複数の役割エージェントによる段階的開発。
+
+**フロー**
+1. Issue
+2. Plan
+3. Implementation
+4. Review
+5. PR
+
+**用途**
+- 複雑な変更
+- 設計が必要なタスク
+
+## 🧭 Mode Selection
+
+| ケース | モード |
+| :-- |:-- |
+| 小規模な変更・新規機能 | 通常 |
+| 複雑な変更・大規模な新規機能 | オーケストレーター |
+
+---
+
+## 📚 Docs
 
 - [AGENTS.md](./AGENTS.md)
 - [CODING_RULES.md](./CODING_RULES.md)
