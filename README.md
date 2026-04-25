@@ -32,6 +32,7 @@ gem install nth_weekday
 ## 💻 Requirements / 動作環境
 
 - Ruby 3.3.0以上
+- CI verified on Ruby 3.3.0 and Ruby 4.0.1
 
 ## 🚀 Usage / 使い方
 
