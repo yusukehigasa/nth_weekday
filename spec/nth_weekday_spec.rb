@@ -35,6 +35,26 @@ RSpec.describe NthWeekday do
         result = NthWeekday.get(year: 2025, month: 2, weekday: :sa, nth: 5)
         expect(result).to be_nil
       end
+
+      it 'returns a formatted date string when format is a strftime pattern' do
+        result = NthWeekday.get(year: 2025, month: 4, weekday: :we, nth: 3, format: '%Y-%m-%d')
+        expect(result).to eq('2025-04-16')
+      end
+
+      it 'returns a differently formatted date string when another strftime pattern is given' do
+        result = NthWeekday.get(year: 2025, month: 12, weekday: :fr, nth: -1, format: '%Y/%m/%d')
+        expect(result).to eq('2025/12/26')
+      end
+
+      it 'returns a UNIX timestamp at UTC midnight when format is unix' do
+        result = NthWeekday.get(year: 2025, month: 4, weekday: :we, nth: 3, format: :unix)
+        expect(result).to eq(Time.utc(2025, 4, 16).to_i)
+      end
+
+      it 'returns nil with format when the nth occurrence does not exist in the month' do
+        result = NthWeekday.get(year: 2025, month: 2, weekday: :sa, nth: 5, format: '%Y-%m-%d')
+        expect(result).to be_nil
+      end
     end
 
     context 'with invalid parameters' do
@@ -66,6 +86,16 @@ RSpec.describe NthWeekday do
       it 'raises an error for negative nth other than -1' do
         expect { NthWeekday.get(year: 2025, month: 4, weekday: :we, nth: -2) }
             .to raise_error(ArgumentError, 'Invalid nth: -2')
+      end
+
+      it 'raises an error for unsupported format symbols' do
+        expect { NthWeekday.get(year: 2025, month: 4, weekday: :we, nth: 3, format: :timestamp) }
+            .to raise_error(ArgumentError, 'Invalid format: timestamp')
+      end
+
+      it 'raises an error for invalid format types' do
+        expect { NthWeekday.get(year: 2025, month: 4, weekday: :we, nth: 3, format: 123) }
+            .to raise_error(ArgumentError, 'Invalid format: 123')
       end
     end
   end

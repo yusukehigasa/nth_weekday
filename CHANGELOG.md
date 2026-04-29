@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Added optional `format:` support to `NthWeekday.get` for `Date#strftime` strings and UTC midnight UNIX timestamps.
+
 ## [0.1.1] - 2025-05-11
 
 ### Added

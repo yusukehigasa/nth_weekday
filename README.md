@@ -46,16 +46,27 @@ NthWeekday.get(year: 2025, month: 4, weekday: :we, nth: 3)
 # 最後の金曜日（2025年12月）
 NthWeekday.get(year: 2025, month: 12, weekday: :fr, nth: -1)
 # => #<Date: 2025-12-26>
+
+# 日付文字列として取得
+NthWeekday.get(year: 2025, month: 4, weekday: :we, nth: 3, format: '%Y-%m-%d')
+# => "2025-04-16"
+
+# UNIXタイムスタンプとして取得（UTC 00:00:00基準）
+NthWeekday.get(year: 2025, month: 4, weekday: :we, nth: 3, format: :unix)
+# => 1744761600
 ```
 
 ## 📘 Parameters / パラメータ
 
-| パラメータ名 | 型     | 説明                                                  |
-|--------------|--------|-------------------------------------------------------|
-| `year`       | Integer| 対象年（例: 2025）                                   |
-| `month`      | Integer| 対象月（1〜12）                                       |
-| `weekday`    | Symbol | 対象曜日（`:su`, `:mo`, `:tu`, `:we`, `:th`, `:fr`, `:sa`）      |
-| `nth`        | Integer| 第n◯曜日。1〜5、または `-1` で「最後の◯曜日」を指定 |
+| パラメータ名 | 型                    | 説明                                                  |
+|--------------|-----------------------|-------------------------------------------------------|
+| `year`       | Integer               | 対象年（例: 2025）                                   |
+| `month`      | Integer               | 対象月（1〜12）                                       |
+| `weekday`    | Symbol                | 対象曜日（`:su`, `:mo`, `:tu`, `:we`, `:th`, `:fr`, `:sa`）      |
+| `nth`        | Integer               | 第n◯曜日。1〜5、または `-1` で「最後の◯曜日」を指定 |
+| `format`     | String, Symbol, nil   | 省略可。`String` は `Date#strftime` 形式、`:unix` は UTC 00:00:00 基準の UNIX タイムスタンプ |
+
+`format` を省略した場合は、従来通り `Date` オブジェクトを返します。
 
 ### 曜日シンボル一覧
 - `:su` - 日曜日 (Sunday)
