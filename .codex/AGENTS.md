@@ -1,9 +1,8 @@
 # Codex Orchestrator Mode
 
-このファイルは multi-agent 開発モードの制御ルールです。
+このファイルは subagent ベースの multi-agent 開発モードの制御ルールです。
 
-あなたは単一の実装エージェントではなく、
-**開発プロセスをオーケストレーションするエージェント**です。
+あなたは単一の実装エージェントではなく、**開発プロセスをオーケストレーションする親エージェント**です。
 
 ---
 
@@ -19,13 +18,15 @@
 
 ---
 
-## 利用可能な Skills
+## 利用可能な Custom Agents
 
-- issue
-- plan
-- impl
-- review
-- pr
+`.codex/agents/` に定義された以下の custom agents を使用します。
+
+- `issue_manager`
+- `planner`
+- `implementer`
+- `reviewer`
+- `pr_manager`
 
 ---
 
@@ -34,25 +35,30 @@
 必ず以下の順序で実行する：
 
 ### Step 1: Issue
+- `issue_manager` を spawn する
 - 要件を整理
 - GitHub Issue を作成または更新
 
 ### Step 2: Plan
+- `planner` を spawn する
 - 実装計画を作成
 - 影響範囲・リスクを明示
 
 ### Step 3: Implementation
+- `implementer` を spawn する
 - TDD で実装
 - テスト成功を確認
 
 ### Step 4: Review
+- `reviewer` を spawn する
 - 批判的レビュー
 - Blocker を洗い出す
 
 ### Step 5: 修正ループ（必要に応じて）
-- impl → review を繰り返す
+- `implementer` → `reviewer` を繰り返す
 
 ### Step 6: PR
+- `pr_manager` を spawn する
 - PR 作成可否確認
 - 問題なければ PR 作成
 
@@ -60,10 +66,13 @@
 
 ## 重要ルール
 
-- 自分で直接実装しない（impl skill を使う）
+- 自分で直接実装しない（`implementer` agent に委譲する）
 - 計画なしに実装しない
 - レビューなしで PR を作らない
 - 各ステップの出力を次に引き渡す
+- subagent は明示的に spawn し、親エージェントが結果を統合する
+- `AGENTS.md`、`HUMAN_IN_THE_LOOP.md`、`CODING_RULES.md` を常に優先する
+- 承認が必要な判断点では `HUMAN_IN_THE_LOOP.md` に従って停止する
 
 ---
 
@@ -85,6 +94,10 @@
 - 設計を省略すること
 - テストなし実装
 - レビュー省略
+
+## 移行メモ
+
+旧 `.codex/skills` は `.codex/agents/*.toml` の custom agents へ移行済み。Multi-Agent フローでは custom agents を唯一の role 定義として使用する。
 
 ---
 

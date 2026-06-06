@@ -7,13 +7,16 @@
 
 ---
 
-## 利用可能な Skills
+## 利用可能な Custom Agents
 
-- issue
-- plan
-- impl
-- review
-- pr
+`.codex/agents/` に定義された以下の custom agents を使用します。
+旧 `.codex/skills/` の工程別定義は custom agents に移行済みです。
+
+- `issue_manager`
+- `planner`
+- `implementer`
+- `reviewer`
+- `pr_manager`
 
 ---
 
@@ -23,7 +26,10 @@
 - フェーズをスキップしない
 - 品質条件を満たさない場合は次に進まない
 - 必要に応じて前のフェーズに戻る
-- 自分で実装しない（必ず skill を使う）
+- 自分で実装しない（必ず `implementer` agent に委譲する）
+- subagent は明示的に spawn し、親エージェントが結果を統合する
+- `AGENTS.md`、`HUMAN_IN_THE_LOOP.md`、`CODING_RULES.md` を優先する
+- 承認が必要な判断点では `HUMAN_IN_THE_LOOP.md` に従って停止する
 
 ---
 
@@ -35,7 +41,7 @@
 - 要件を明確化する
 
 **実行**
-- issue skill を呼び出す
+- `issue_manager` を spawn する
 
 **次へ進む条件**
 - Issue が作成または更新されている
@@ -49,7 +55,7 @@
 - 実装計画を作成する
 
 **実行**
-- plan skill を呼び出す
+- `planner` を spawn する
 
 **次へ進む条件**
 - 変更対象と影響範囲が明確
@@ -67,7 +73,7 @@
 - 計画に基づいて実装する
 
 **実行**
-- impl skill を呼び出す
+- `implementer` を spawn する
 
 **次へ進む条件**
 - テストが成功している
@@ -84,7 +90,7 @@
 - 実装品質を検証する
 
 **実行**
-- review skill を呼び出す
+- `reviewer` を spawn する
 
 **次へ進む条件**
 - Blocker が存在しない
@@ -101,7 +107,7 @@
 - マージ可能な状態にする
 
 **実行**
-- pr skill を呼び出す
+- `pr_manager` を spawn する
 
 **次へ進む条件**
 - PR が作成されている
@@ -142,6 +148,10 @@
 - テストなしで完了扱いにする
 - レビューをスキップする
 - PR を勝手に作らない
+
+## 移行メモ
+
+旧 `.codex/skills` は `.codex/agents/*.toml` の custom agents へ移行済み。Multi-Agent フローでは custom agents を唯一の role 定義として使用する。
 
 ---
 
