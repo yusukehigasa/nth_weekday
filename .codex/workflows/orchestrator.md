@@ -7,13 +7,18 @@
 
 ---
 
-## 利用可能な Skills
+## 利用可能な Role Profiles
 
-- issue
-- plan
-- impl
-- review
-- pr
+`.codex/agents/` に定義された TOML を、工程別の role profile として使用します。
+旧 `.codex/skills/` の工程別定義は role profiles に移行済みです。
+custom agent として spawn できる環境では `name` の agent を spawn します。
+custom agent として spawn できない環境では、built-in agent に対象 TOML を読ませ、同じ role profile に従わせます。
+
+- Issue: `.codex/agents/issue-manager.toml` (`issue_manager`)
+- Plan: `.codex/agents/planner.toml` (`planner`)
+- Implementation: `.codex/agents/implementer.toml` (`implementer`)
+- Review: `.codex/agents/reviewer.toml` (`reviewer`)
+- PR: `.codex/agents/pr-manager.toml` (`pr_manager`)
 
 ---
 
@@ -23,7 +28,11 @@
 - フェーズをスキップしない
 - 品質条件を満たさない場合は次に進まない
 - 必要に応じて前のフェーズに戻る
-- 自分で実装しない（必ず skill を使う）
+- 自分で実装しない（必ず該当する role profile を使って別 agent に委譲する）
+- subagent は明示的に spawn し、親エージェントが結果を統合する
+- custom agent 名を実行可能 role として前提にしない。利用できない場合は built-in `default` / `explorer` / `worker` を使い、対象 TOML を明示的に読ませる
+- `AGENTS.md`、`HUMAN_IN_THE_LOOP.md`、`CODING_RULES.md` を優先する
+- 承認が必要な判断点では `HUMAN_IN_THE_LOOP.md` に従って停止する
 
 ---
 
@@ -35,7 +44,8 @@
 - 要件を明確化する
 
 **実行**
-- issue skill を呼び出す
+- `.codex/agents/issue-manager.toml` を role profile として使用する
+- custom agent が利用可能なら `issue_manager` を spawn し、利用できない場合は built-in `default` に同 TOML を読ませる
 
 **次へ進む条件**
 - Issue が作成または更新されている
@@ -49,7 +59,8 @@
 - 実装計画を作成する
 
 **実行**
-- plan skill を呼び出す
+- `.codex/agents/planner.toml` を role profile として使用する
+- custom agent が利用可能なら `planner` を spawn し、利用できない場合は built-in `explorer` に同 TOML を読ませる
 
 **次へ進む条件**
 - 変更対象と影響範囲が明確
@@ -67,7 +78,8 @@
 - 計画に基づいて実装する
 
 **実行**
-- impl skill を呼び出す
+- `.codex/agents/implementer.toml` を role profile として使用する
+- custom agent が利用可能なら `implementer` を spawn し、利用できない場合は built-in `worker` に同 TOML を読ませる
 
 **次へ進む条件**
 - テストが成功している
@@ -84,7 +96,8 @@
 - 実装品質を検証する
 
 **実行**
-- review skill を呼び出す
+- `.codex/agents/reviewer.toml` を role profile として使用する
+- custom agent が利用可能なら `reviewer` を spawn し、利用できない場合は built-in `explorer` に同 TOML を読ませる
 
 **次へ進む条件**
 - Blocker が存在しない
@@ -101,7 +114,8 @@
 - マージ可能な状態にする
 
 **実行**
-- pr skill を呼び出す
+- `.codex/agents/pr-manager.toml` を role profile として使用する
+- custom agent が利用可能なら `pr_manager` を spawn し、利用できない場合は built-in `worker` に同 TOML を読ませる
 
 **次へ進む条件**
 - PR が作成されている
@@ -142,6 +156,11 @@
 - テストなしで完了扱いにする
 - レビューをスキップする
 - PR を勝手に作らない
+
+## 移行メモ
+
+旧 `.codex/skills` は `.codex/agents/*.toml` の role profiles へ移行済み。
+`.codex/agents/*.toml` は official custom agent 定義であると同時に、custom agent が利用できない環境で built-in agent に読ませる工程定義として使用する。
 
 ---
 
