@@ -1,3 +1,4 @@
 [agents]
-max_threads = 6
+max_concurrent_threads_per_session = 6
+# V1 で有効。V2 はこの値を無視するため、workflow でも子の再委譲を禁止する。
 max_depth = 1
