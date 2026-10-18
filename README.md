@@ -98,51 +98,14 @@ bundle exec rubocop  # コードスタイルチェック
 
 このプロジェクトでは [RuboCop](https://rubocop.org/) を使用してコードスタイルを一貫して維持しています。コード変更時は `bundle exec rubocop` でスタイルチェックを実行してください。
 
-エージェント運用時のルールは以下を参照してください。
+## 🤖 AI / Agent Development
 
-## 🤖 AI / Agent Development Modes
+通常は単一エージェントで進め、複雑な変更や明示的な指定ではオーケストレーターを利用します。オーケストレーターでは要件整理・計画・実装・独立レビューを行い、Issue / PR の外部投稿は依頼された場合に行います。
 
-このリポジトリは AI エージェントによる開発を前提に、2つのモードをサポートしています。
-
-### 🧩 通常モード（Single Agent）
-
-単一エージェントによる高速な実装。
-
-**用途**
-- 小規模修正
-- 明確なタスク
-
----
-
-### 🧠 オーケストレーターモード（Multi-Agent）
-
-複数の役割エージェントによる段階的開発。
-
-**フロー**
-1. Issue
-2. Plan
-3. Implementation
-4. Review
-5. PR
-
-**用途**
-- 複雑な変更
-- 設計が必要なタスク
-
-## 🧭 Mode Selection
-
-| ケース | モード |
-| :-- |:-- |
-| 小規模な変更・新規機能 | 通常 |
-| 複雑な変更・大規模な新規機能 | オーケストレーター |
-
----
-
-## 📚 Docs
-
-- [AGENTS.md](./AGENTS.md)
-- [CODING_RULES.md](./CODING_RULES.md)
-- [HUMAN_IN_THE_LOOP.md](./HUMAN_IN_THE_LOOP.md)
+- [モード選択と基本方針](./AGENTS.md)
+- [オーケストレーターの入口](./.codex/AGENTS.md)
+- [編集範囲と検証](./CODING_RULES.md)
+- [人間の判断が必要な変更](./HUMAN_IN_THE_LOOP.md)
 
 ## 👥 Contributing / 貢献
 
