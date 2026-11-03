@@ -100,7 +100,9 @@ bundle exec rubocop  # コードスタイルチェック
 
 ## 🤖 AI / Agent Development
 
-通常は単一エージェントで進め、複雑な変更や明示的な指定ではオーケストレーターを利用します。オーケストレーターでは要件整理・計画・実装・独立レビューを行い、Issue / PR の外部投稿は依頼された場合に行います。
+通常は単一エージェントで進め、複雑な変更や明示的な指定ではオーケストレーターを利用します。小規模な依頼では、オーケストレーター指定でも通常モードを提案し、ユーザーの同意後に切り替えます。各工程をサブエージェントへ渡す前には、担当・作業範囲・完了条件を示してユーザーの承認を待ちます。Issue / PR の外部投稿は依頼された場合に行います。
+
+編集前に `feature/yyyymmdd/codex/issue-<NUMBER>/short_description` 形式の作業ブランチを作成します。Issue がない場合は `issue-<NUMBER>/` を省略します。詳細は以下の規則を参照してください。
 
 - [モード選択と基本方針](./AGENTS.md)
 - [オーケストレーターの入口](./.codex/AGENTS.md)
@@ -110,9 +112,9 @@ bundle exec rubocop  # コードスタイルチェック
 ## 👥 Contributing / 貢献
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+2. Create your feature branch using the naming rules in [AGENTS.md](./AGENTS.md) (e.g. `git checkout -b feature/20261103/codex/add_feature`)
 3. Commit your changes (`git commit -am 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+4. Push to the branch (`git push -u origin HEAD`)
 5. Create a new Pull Request
 
 バグ報告や機能要望は[GitHub Issues](https://github.com/yusukehigasa/nth_weekday/issues)にお願いします。
