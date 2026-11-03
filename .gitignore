@@ -1,3 +1,6 @@
 .rspec
 .rspec_status
 /nth_weekday-*.gem
+
+# Local task progress and verification records
+/.codex/task-records/

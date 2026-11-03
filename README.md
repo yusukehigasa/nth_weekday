@@ -108,6 +108,9 @@ bundle exec rubocop  # コードスタイルチェック
 - [オーケストレーターの入口](./.codex/AGENTS.md)
 - [編集範囲と検証](./CODING_RULES.md)
 - [人間の判断が必要な変更](./HUMAN_IN_THE_LOOP.md)
+- [両モード共通の開発ループ](./.codex/workflows/development-loop.md)
+
+両モードとも、受け入れ条件を定め、変更に応じた検証結果を確認して修正・完了・停止を判断します。初期の修正・検証上限は3サイクルです。承認待ちや中断時には [作業記録テンプレート](./.codex/templates/task-record.md) の項目に沿って、検証したファイル状態と次の行動を残します。保存先はGit管理対象外の `.codex/task-records/` を既定とし、共有が必要なら明示されたIssue・Notion等を使います。タスクごとに正本を1つ決め、動的な記録はコミットせず、共有する最終結果はPR等に要約します。導入後3〜5件で反復回数・人間の介入・記録負担を評価します。
 
 ## 👥 Contributing / 貢献
 
