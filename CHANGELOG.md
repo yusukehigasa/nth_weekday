@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Updated the development Ruby version and CI target from Ruby 4.0.1 to Ruby 4.0.9, retaining Ruby 3.3.0 as the minimum supported version.
+- Pinned CI runners to Ubuntu 24.04 to avoid automatic operating system upgrades through `ubuntu-latest`.
+
 ## [0.2.0] - 2026-04-29
 
 ### Added
